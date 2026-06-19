@@ -1,31 +1,44 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
   <title>Paw-Quest</title>
 
+  <!-- PWA manifest -->
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#ffffff" />
+
+  <!-- Favicon (optional but safe) -->
+  <link rel="icon" href="favicon.ico" />
 </head>
 
 <body>
 
-  <h1>🐾 Paw-Quest</h1>
+  <main>
+    <h1>🐾 Paw-Quest</h1>
 
-  <p id="status">Idle</p>
+    <p id="status">Idle</p>
 
-  <button id="start">Start</button>
-  <button id="step">Step</button>
-  <button id="end">End</button>
+    <button id="start">Start</button>
+    <button id="step">Step</button>
+    <button id="end">End</button>
 
-  <p id="out">Steps: 0</p>
+    <p id="output">Steps: 0</p>
+  </main>
 
+  <!-- App logic -->
   <script src="app.js"></script>
 
+  <!-- Service worker (required for installability) -->
   <script>
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("sw.js");
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("sw.js")
+          .then(() => console.log("SW registered"))
+          .catch(err => console.log("SW failed:", err));
+      });
     }
   </script>
 
