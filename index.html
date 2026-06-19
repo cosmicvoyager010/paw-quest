@@ -1,22 +1,51 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>Paw-Quest</title>
+
+  <!-- PWA: MANIFEST -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- PWA: THEME -->
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- OPTIONAL: improves iOS behavior -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
 </head>
+
 <body>
 
-  <h1>Paw-Quest</h1>
+  <!-- SIMPLE UI -->
+  <main>
+    <h1>Paw-Quest</h1>
 
-  <p id="status">Idle</p>
+    <p id="status">Idle</p>
 
-  <button id="start">Start</button>
-  <button id="step">Step</button>
-  <button id="end">End</button>
+    <button id="start">Start</button>
+    <button id="step">Step</button>
+    <button id="end">End</button>
 
-  <p id="output">Steps: 0</p>
+    <p id="output">Steps: 0</p>
+  </main>
 
+  <!-- APP LOGIC -->
   <script src="app.js"></script>
+
+  <!-- SERVICE WORKER (CRITICAL FOR PWA INSTALL) -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js")
+          .then(() => console.log("SW registered"))
+          .catch(err => console.log("SW failed:", err));
+      });
+    }
+  </script>
 
 </body>
 </html>
