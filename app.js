@@ -1,4 +1,4 @@
-console.log("paw-quest loaded");
+console.log("Paw-Quest loaded");
 
 let steps = 0;
 let active = false;
