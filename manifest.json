@@ -1,0 +1,9 @@
+{
+  "name": "Paw-Quest",
+  "short_name": "PawQuest",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": []
+}
