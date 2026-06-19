@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Paw-Quest</title>
+
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#ffffff" />
+</head>
+
+<body>
+
+  <h1>🐾 Paw-Quest</h1>
+
+  <p id="status">Idle</p>
+
+  <button id="start">Start</button>
+  <button id="step">Step</button>
+  <button id="end">End</button>
+
+  <p id="out">Steps: 0</p>
+
+  <script src="app.js"></script>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js");
+    }
+  </script>
+
+</body>
+</html>
