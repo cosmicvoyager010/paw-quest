@@ -1,7 +1,20 @@
-self.addEventListener("install", () => {
-  console.log("SW installed");
+const CACHE = "paw-quest-v1";
+
+self.addEventListener("install", event => {
+  event.waitUntil(
+    caches.open(CACHE).then(cache => {
+      return cache.addAll([
+        "./",
+        "./index.html",
+        "./app.js",
+        "./manifest.json"
+      ]);
+    })
+  );
 });
 
-self.addEventListener("fetch", (e) => {
-  e.respondWith(fetch(e.request));
+self.addEventListener("fetch", event => {
+  event.respondWith(
+    caches.match(event.request).then(res => res || fetch(event.request))
+  );
 });
