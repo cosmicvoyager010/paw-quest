@@ -5,33 +5,35 @@ let active = false;
 
 window.addEventListener("DOMContentLoaded", () => {
   const status = document.getElementById("status");
-  const out = document.getElementById("out");
+  const output = document.getElementById("output");
 
   const start = document.getElementById("start");
   const step = document.getElementById("step");
   const end = document.getElementById("end");
 
   function render() {
+    if (!status || !output) return;
+
     status.textContent = active ? "Walking 🐾" : "Idle";
-    out.textContent = "Steps: " + steps;
+    output.textContent = "Steps: " + steps;
   }
 
-  start.onclick = () => {
+  start?.addEventListener("click", () => {
     active = true;
     render();
-  };
+  });
 
-  step.onclick = () => {
+  step?.addEventListener("click", () => {
     if (!active) return;
     steps++;
     render();
-  };
+  });
 
-  end.onclick = () => {
+  end?.addEventListener("click", () => {
     active = false;
     steps = 0;
     render();
-  };
+  });
 
   render();
 });
